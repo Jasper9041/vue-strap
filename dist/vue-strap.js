@@ -7590,7 +7590,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(201)
+	__webpack_require__(201)
+	module.exports = __webpack_require__(203)
 	
 	if (module.exports.__esModule) module.exports = module.exports.default
 	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(204)
@@ -7614,15 +7615,60 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(202);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(105)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7208b507&file=Spinner.vue!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Spinner.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7208b507&file=Spinner.vue!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Spinner.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(104)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/*!\n *\n * Spinner\n * With fallback to IE9\n *\n */\n@-webkit-keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n@keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.spinner-gritcode {\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  z-index: 9998;\n  position: absolute;\n  width: 100%;\n  text-align: center;\n  background: rgba(255, 255, 255, 0.9); }\n  .spinner-gritcode.spinner-fixed {\n    position: fixed; }\n  .spinner-gritcode .spinner-wrapper {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%); }\n  .spinner-gritcode .spinner-circle {\n    position: relative;\n    border: 4px solid #ccc;\n    border-right-color: #337ab7;\n    border-radius: 50%;\n    display: inline-block;\n    -webkit-animation: spin 0.6s linear;\n            animation: spin 0.6s linear;\n    -webkit-animation-iteration-count: infinite;\n            animation-iteration-count: infinite;\n    width: 3em;\n    height: 3em;\n    z-index: 2; }\n  .spinner-gritcode .spinner-text {\n    position: relative;\n    text-align: center;\n    margin-top: 0.5em;\n    z-index: 2;\n    width: 100%;\n    font-size: 95%;\n    color: #337ab7; }\n\n.spinner-gritcode.spinner-sm .spinner-circle {\n  width: 1.5em;\n  height: 1.5em; }\n\n.spinner-gritcode.spinner-md .spinner-circle {\n  width: 2em;\n  height: 2em; }\n\n.spinner-gritcode.spinner-lg .spinner-circle {\n  width: 2.5em;\n  height: 2.5em; }\n\n.spinner-gritcode.spinner-xl .spinner-circle {\n  width: 3.5em;\n  height: 3.5em; }\n\n.lt-ie10 .spinner-gritcode .spinner-circle, .ie9 .spinner-gritcode .spinner-circle, .oldie .spinner-gritcode .spinner-circle, .no-csstransitions .spinner-gritcode .spinner-circle, .no-csstransforms3d .spinner-gritcode .spinner-circle {\n  background: url(\"http://i2.wp.com/www.thegreatnovelingadventure.com/wp-content/plugins/wp-polls/images/loading.gif\") center center no-repeat;\n  -webkit-animation: none;\n          animation: none;\n  margin-left: 0;\n  margin-top: 5px;\n  border: none;\n  width: 32px;\n  height: 32px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	__webpack_require__(202);
-	
 	var _utils = __webpack_require__(96);
+	
+	var MIN_WAIT = 500; // in ms
+	
+	// <style lang="sass">
+	//   // import styling
+	//   @import './spinner.scss';
+	// </style>
 	
 	// <template>
 	//   <div :class="['spinner spinner-gritcode',spinnerSize,{'spinner-fixed':fixed}]" v-show="active">
@@ -7634,8 +7680,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	// </template>
 	
 	// <script>
-	// import styling
-	var MIN_WAIT = 500; // in ms
 	
 	exports.default = {
 	  props: {
@@ -7726,33 +7770,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	// </script>
 
 /***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./spinner.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(105)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./spinner.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./spinner.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 203 */,
 /* 204 */
 /***/ function(module, exports) {
 
