@@ -17,7 +17,7 @@ export default {
       return this.$parent.index === this.index
     }
   },
-  destroy() {
+  beforeDestroy() {
     this.$parent.indicator.pop(this.index)
   },
   ready() {

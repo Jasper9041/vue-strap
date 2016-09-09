@@ -7561,7 +7561,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return this.$parent.index === this.index;
 	    }
 	  },
-	  destroy: function destroy() {
+	  beforeDestroy: function beforeDestroy() {
 	    this.$parent.indicator.pop(this.index);
 	  },
 	  ready: function ready() {
