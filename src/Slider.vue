@@ -17,6 +17,9 @@ export default {
       return this.$parent.index === this.index
     }
   },
+  destroy() {
+    this.$parent.indicator.pop(this.index)
+  },
   ready() {
     for (var c in this.$parent.$children) {
       if (this.$parent.$children[c] === this) {
