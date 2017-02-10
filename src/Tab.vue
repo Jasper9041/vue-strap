@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     active () {
-      return this._tabset.show == this
+      return this._tabset.show === this
     },
     index () {
       return this._tabset.tabs.indexOf(this)
@@ -61,6 +61,9 @@ export default {
   },
   beforeDestroy () {
     if (this._tabset.active === this.index) { this._tabset.active = 0 }
+    if (this._ingroup) {
+      this.$parent.tabs.$remove(this)
+    }
     this._tabset.tabs.$remove(this)
   }
 }
